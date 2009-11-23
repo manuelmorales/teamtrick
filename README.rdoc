@@ -4,6 +4,8 @@ TeamTrick is an open source web application to implement Scrum. It was created t
 teams to cope with all the tedious tasks of Scrum like burndown graph generation and 
 team velocity calculation.
 
+More information and screenshots on the TeamTrick micro-site http://team-trick.net
+
 == Main Features
 
 These are the main features of TeamTrick:
@@ -36,7 +38,7 @@ The installation process depends on whether you are using Linux, Macintosh or Wi
 
 2. Clone the Git repository
 
-  git clone http://...
+  git clone git://github.com/manuelmorales/teamtrick.git
   cd teamtrick
 
 3. Copy the default database configuration file
@@ -66,7 +68,7 @@ The installation process depends on whether you are using Linux, Macintosh or Wi
   script/server -e production
 
 
-And you're done. You can now point your browser to http://localhost:3000/
+And you're done. You can now point your browser to http://localhost:3000
 to start using TeamTrick.
 
 == License
@@ -84,5 +86,5 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program.  If not, see http://www.gnu.org/licenses.
 
