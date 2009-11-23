@@ -1,0 +1,15 @@
+# Users 0..2 are commited at a level of 50
+# to the sprints 0..1 of the projects 0..1
+
+<% for project in 0..1 %>
+  <% for user in 0..2 %>
+    <% for sprint in 0..1 %>
+
+commitment_u<%= user %>_p<%= project %>_s<%= sprint %>:
+  user_id: <%= user %>
+  sprint: sprint_p<%= project %>_<%= sprint %>
+  level: 50
+
+    <% end %>
+  <% end %>
+<% end %>

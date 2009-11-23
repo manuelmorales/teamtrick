@@ -1,0 +1,25 @@
+# Project 0 has
+# user 0 as product_owner
+# user 1 as scrum master
+# users 2 and 3 as team members
+#
+# Project 1 is the same but
+# user 2 is the scrum_master
+
+<%
+  projects = [
+   { :id => 0, :roles => %w{ product_owner scrum_master team_member team_member}},
+   { :id => 1, :roles => %w{ product_owner team_member scrum_master team_member}},
+  ]
+%>
+
+<% projects.each_with_index do |values,project|  %>
+  <% values[:roles].each_with_index do |role,user| %>
+
+duty_<%= "p#{project}_u#{user}" %>:
+  project: project_<%= values[:id] %>
+  role: <%= role %>
+  user_id: <%= user %>
+
+  <% end %>
+<% end %>

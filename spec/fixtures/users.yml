@@ -1,0 +1,22 @@
+# 4 users
+# names, and emails are numerated
+# available_hours_per_week is 40
+# password and salt are always the same
+
+<% 
+  default_salt = "6b9b175a257f5fae9e8bcd915345b9a3ece283ed"
+  default_crypted_password = User.encrypt("pink-panther", default_salt)
+%>
+
+<% for i in 0..3 %>
+<%= %w{admin any default disabled}[i] %>:
+  id: <%= i %>
+  admin: <%= i == 0 ? true : false %> # only user_0 is admin
+  disabled: <%= i == 3 ? true : false %> # only user_3 is disabled
+  login: user_<%= i %>
+  real_name: User <%= i %>
+  email: user_<%= i %>@mail.com
+  salt: <%= default_salt %>
+  crypted_password: <%= default_crypted_password %>
+  available_hours_per_week: <%= 40 %>
+<% end %>

@@ -1,0 +1,24 @@
+# Each project has 2 sprints
+# duration is always 4 weeks minus 1 day
+# estimated_focus_factor is always 0.6
+# first sprint of each project begins on Jan, 1, 2007 (Monday)
+
+# TODO: check how does it work to set number_of_workdays to NULL 
+
+<%
+  begin_date = "Jan, 1, 2007"
+  duration_in_weeks = 4
+%>
+
+<% for project in 0..1 %>
+  <% for sprint in 0..1 %>
+
+sprint_p<%= project %>_<%= sprint %>:
+  start_date: <%= Date.parse(begin_date) + (duration_in_weeks*sprint).weeks %>
+  finish_date: <%= Date.parse(begin_date) + (duration_in_weeks*(sprint+1)).weeks - 1.days%>
+  estimated_focus_factor: <%= 0.6 %>
+  project: project_<%= project %>
+  number_of_workdays: NULL #<%= duration_in_weeks * 5 %>
+
+  <% end %>
+<% end %>

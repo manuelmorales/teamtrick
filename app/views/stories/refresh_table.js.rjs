@@ -1,0 +1,2 @@
+identificator = params[:eid] || params[:controller]
+page.replace_html("as_#{identificator}-content", :partial => "list")

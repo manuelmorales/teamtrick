@@ -1,0 +1,60 @@
+<div class="active-scaffold">
+  <div class="create-view users-view view">
+
+    <%= error_messages_for :user %>
+    <% form_for :user, :html => {:id => 'as_users-create--form'} do |f| -%>
+      <ol class="form" >
+        <li class="form-element ">
+        <dl class="">
+          <dt><label for="real_name">Real Name</label></dt>
+          <dd><%= f.text_field :real_name, :class => "text-input", :size => "26" %></dd>
+          <span class="description"></span>
+        </dl>
+        </li>
+
+        <li class="form-element ">
+        <dl class="">
+          <dt><label for="login">Login</label></dt>
+          <dd><%= f.text_field :login , :class => "text-input", :size => "26"%></dd>
+          <span class="description"></span>
+        </dl>
+        </li>
+
+        <li class="form-element ">
+        <dl class="">
+          <dt><label for="email">Email</label></dt>
+          <dd><%= f.text_field :email , :class => "text-input", :size => "26"%></dd>
+          <span class="description"></span>
+        </dl>
+        </li>
+
+        <li class="form-element ">
+        <dl class="">
+          <dt><label for="password">Password</label></dt>
+          <dd><%= f.password_field :password , :class => "text-input", :size => "26"%></dd>
+          <span class="description"></span>
+        </dl>
+        </li>
+
+        <li class="form-element ">
+        <dl class="">
+          <dt><label for="password_confirmation">Confirm Password</label></dt>
+          <dd><%= f.password_field :password_confirmation , :class => "text-input", :size => "26"%></dd>
+          <span class="description"></span>
+        </dl>
+        </li>
+
+        <li class="form-element ">
+        <dl class="">
+          <dt><%= submit_tag 'Sign up' %></dt>
+          <span class="description"></span>
+        </dl>
+        </li>
+      <% end -%>
+
+      <script type="text/javascript">
+        Form.focusFirstElement('as_users-create--form');
+      </script>
+
+    </div>
+  </div>

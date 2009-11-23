@@ -1,0 +1,29 @@
+# Each one of the non product_owner users (1..3) 
+# has been working 5 hours on
+# each task of the stories 0..6.
+#
+# The day is rotated.
+
+<%
+  stories = (0..6).to_a
+  projects = (0..1).to_a
+%>
+
+<% for project in projects %>
+  <% day = Date.parse("Jan, 1 2007") %>
+  <% for story in stories %>
+    <% for task in 0..3 %>
+      <% day += 1.day %>
+      <% for wh in 0..2 %>
+
+work_hour_p<%= project %>_s<%= story %>_t<%= task %>_<%= wh %>:
+  hours: <%= 5 %>
+  user_id: <%= wh + 1 %>
+  task: task_p<%= project %>_s<%= story %>_<%= task %>
+  date: <%= day %>
+  old_hours_left: 16
+
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

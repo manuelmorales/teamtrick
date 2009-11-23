@@ -1,0 +1,19 @@
+<div class="upper"> </div>
+<ul id="sidebar-ul">
+  <li><%= link_to "Projects List", projects_path %></li>
+  <% if current_user.admin? %>
+    <li><%= link_to "Users List", users_path %></li>
+  <% end %>
+  <% current_user.projects_to_show.each do |p| %>
+    <li><%= link_to h(p.name), project_path(p) %></li>
+    <% if current_project == p %>
+      <ul>
+        <li><%= link_to "Dashboard", project_path(p) %></li>
+        <li><%= link_to "Backlog", project_stories_path(p) %></li>
+        <li><%= link_to "Users & Roles", project_duties_path(p) %></li>
+        <li><%= link_to "Sprints", project_sprints_path(p) %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</ul>
+<div class="lower"> </div>

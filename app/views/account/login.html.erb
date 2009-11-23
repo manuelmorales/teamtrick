@@ -1,0 +1,30 @@
+<ol class="form login">
+  <% form_tag do -%>
+    <li class="form-element">
+    <dl class="">
+      <dt><label for="login">Login</label></dt>
+      <dd><%= text_field_tag 'login', nil, :class => "text-input", :size => 10 %></dd>
+    </dl>  
+    </li>
+
+    <li class="form-element">
+    <dl class="">
+      <dt><label for="password">Password</label></dt>
+      <dd><%= password_field_tag 'password', nil, :class => "text-input", :size => 10 %></dd>
+    </dl>  
+    </li>
+
+    <li class="form-element">
+    <dl class="">
+      <dt><label for="remember_me">Remember me:</label></dt>
+      <dd><%= check_box_tag 'remember_me' %></dd>
+    </dl>  
+    </li>
+
+    <li class="form-element">
+    <dl class="">
+      <dt><%= submit_tag 'Log in', :class => 'submit' %></dt>
+    </dl>  
+    </li>
+  <% end -%>
+</ol>

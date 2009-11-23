@@ -1,0 +1,17 @@
+# The only roles are scrum_master, product_owner
+# and team_member
+
+scrum_master:
+  name: Scrum Master
+  permalink: scrum_master
+  unique: true
+
+product_owner:
+  name: Product Owner
+  permalink: product_owner
+  unique: true
+
+team_member:
+  name: Team Member
+  permalink: team_member
+  unique: false

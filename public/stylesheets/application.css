@@ -1,0 +1,746 @@
+body,
+html {
+  margin:0;
+  padding:0;
+  color:#7C7764;
+  height: 100%;
+  background:#FFF url(/images/background-gradient.png) repeat-x;
+  font-family: Hevetica, Verdana, Arial, Sans-serif;
+}
+
+h1 {
+  color: #7C7764;
+  margin-bottom: 0.4em;
+}
+
+h2 {
+  margin-top: 1em;
+  margin-bottom: 0.4em;
+}
+
+p {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+  font-size: 0.8em;
+}
+
+li {
+  font-size: 0.8em;
+}
+
+a {
+  color: #567FB9;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #AEC2DE;
+}
+
+a img{
+  border: none;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+table { 
+  width: 100%;
+  margin-top: 0.2em;
+  margin-bottom: 0.4em;
+}
+
+table.project-list {
+  font-size: 1.1em;
+}
+
+table.project-list h2 {
+  font-size: 1.5em;
+}
+
+td.header {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+form {
+  margin-bottom: 1em;
+}
+
+form p {
+  margin: 1em 0px 0px 0px;
+  clear: left;
+}
+
+form label {
+  font-weight: bold;
+} 
+
+form .input {
+  border: 1px solid #999;
+  background: #F2F2F2;
+  margin-top: 2px;
+}
+
+form .input:focus {
+  background: #F7F7F7;
+}
+
+form select {
+  width: 150px;
+}
+
+form .submit {
+  margin-top: 1.5em;
+  background: none;
+}
+
+.fieldWithErrors {
+}
+
+.fieldWithErrors label {
+  color: #D77;
+}
+
+.warningExplanation {
+  border: 1px solid yellow;
+  padding: 20px;
+  background-color: #FFE;
+}
+
+.noticeExplanation {
+  border: 1px solid green;
+  padding: 20px;
+  background-color: #EFE;
+}
+
+.errorExplanation, .active-scaffold .errorExplanation {
+  border: 1px solid red;
+  padding: 20px;
+  background-color: #FEE;
+  color: #666;
+}
+
+.errorExplanation h2, .active-scaffold .errorExplanation h2 {
+  color: #666;
+  margin-top: 0em;
+  font-size: 1.2em;
+  background-color: transparent;
+}
+
+#background {
+  position: absolute;
+  height: 800px;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+}
+
+#background-gradient {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#wrap {
+  width: 950px;
+  margin: 0 auto;
+  padding: 0;
+  background-color: transparent;
+}
+
+#header {
+  margin-top: 20px;
+}
+
+#logo {
+  top: 20px;
+  left: 0px;
+  margin-bottom: 20px;
+  float: left;
+}
+
+#user-menu {
+  position: relative;
+  bottom: 4px;
+  right: 0px;
+  text-align: right;
+  color: #FFF;
+  font-weight: bold;
+}
+
+#user-menu a {
+  color: #FFF;
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+#user-menu a:hover {
+  text-decoration: underline;
+}
+
+#sidebar {
+  position: relative;
+  float: left;
+  width: 240px; /* wrap width + 2*padding = sidebar width - main width */
+  text-align: right;
+  padding: 0px;
+  font-size: 1.2em;
+}
+
+#sidebar-ul {
+  background:#8A8A8A url(/images/sidebar/left.png) repeat-y;
+  padding-right: 10px;
+}
+
+#sidebar .upper {
+  background: url(/images/sidebar/upper-trans.png) no-repeat;
+  width: 240px;
+  height: 10px;
+  padding: 0px;
+  font-size: 0.01em;
+}
+
+#sidebar .lower {
+  background: url(/images/sidebar/lower-trans.png) no-repeat;
+  width: 240px;
+  height: 10px;
+  padding: 0px;
+  font-size: 0.01em;
+}
+
+
+#main {
+  position: relative;
+  float: right;
+  width: 710px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.center-content {
+  margin-top: 0px;
+  background: #FFF;
+  padding: 10px 50px;
+  min-height: 200px;
+}
+
+#main .top {
+  font-size: 0.01em;
+  width: 700px; /* main width - corner width */
+  height:10px;
+  background:url(/images/main/top-left-trans.png) no-repeat left top;
+}
+
+#main .top span {
+  display:block;
+  position:relative;
+  margin-right: -10px;
+  height:10px;
+  background:url(/images/main/top-right-trans.png) no-repeat right top;
+}
+
+
+#main .bottom {
+  font-size: 0.01em;
+  width: 700px;
+  height:10px;
+  background:url(/images/main/bottom-left-trans.png) no-repeat left bottom;
+}
+
+#main .bottom span {
+  display:block;
+  position:relative;
+  right: -10px;
+  height:10px;
+  background:url(/images/main/bottom-right-trans.png) no-repeat right bottom;
+}
+#centered-main {
+  position: relative;
+  margin: auto;
+  width: 350px;
+  padding: 20px;
+  background:#FFF;
+  min-height: 160px;
+  -webkit-border-radius: 1ex;
+  -moz-border-radius: 1ex;
+}
+
+#yielded-content {
+  position: relative;
+  width: 260px;
+  margin-left: -130px;
+  left: 50%;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+
+.clear {
+  clear: both;
+}
+
+#sidebar ul {
+  margin: 0px;
+}
+
+#sidebar ul li {
+  list-style-type: none;
+  padding-top: 0.9em;
+  padding-bottom: 0.2em;
+}
+
+#sidebar ul li a {
+  color: #AEC2DE;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 115%;
+}
+
+#sidebar ul li a:hover {
+  color: #C0D6F5;
+}
+
+#sidebar ul ul li {
+  padding-top: 0em;
+  padding-bottom: 0em;
+}
+
+#sidebar ul ul li a {
+  color: #FFF;
+  font-size: 75%;
+  text-transform: lowercase;
+}
+
+#sidebar ul ul li a:hover {
+  color: #DDD;
+}
+
+.centered {
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.list {
+  width: 400px;
+  font-size: 0.9em;
+}
+
+p.description {
+  font-family: Georgia,Times,serif;
+  font-style: italic;
+  font-size: 1em;
+}
+
+.edit-links {
+  color: #567FB9;
+  font-size: 0.7em;
+  width: 100px;
+}
+
+ul.show {
+  padding-left: 0px;
+}
+
+ul.show li {
+  list-style-type: none;
+  margin: 3px;
+}
+
+ul.show span {
+  font-weight: bold;
+}
+
+.active-scaffold .actions {
+  width: auto;
+}
+
+.active-scaffold p.description {
+  font-size: 16px;
+}
+
+.projects-list h2 {
+  font-size: 2em;
+  margin-top: 0;
+}
+
+.projects-list td.project-record, .projects-list table.actions td {
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+#as_projects-active-scaffold table {
+  border: none;
+}
+
+#as_projects-active-scaffold table .new-view {
+  border: 1px solid #EEE;
+}
+
+.active-scaffold h4, .active-scaffold h5 {
+  color:#567FB9;
+  font-size:18px;
+}
+
+.active-scaffold .tasks-view h4, .active-scaffold h5 {
+  font-size:16px;
+}
+
+
+.active-scaffold input.text-input, .active-scaffold select, .active-scaffold textarea {
+  border: 1px solid #EEE;
+}
+
+.active-scaffold select:focus, .active-scaffold input.text-input:focus, .active-scaffold textarea:focus {
+  background-color:#FFFFEE;
+}
+
+.active-scaffold a.inline-adapter-close {
+  background: transparent url(../../../images/active_scaffold/default/cross.png) no-repeat scroll 0 0
+}
+
+.active-scaffold .actions a.disabled {
+  color: transparent;
+}
+
+.active-scaffold .actions a.disabled:hover {
+  background-color: transparent;
+}
+
+.active-scaffold .submit, form .input:focus {
+  background-color:#EEE;
+  border: 1px solid;
+  border-color: #DDDDDD #AAAAAA #AAAAAA #DDDDDD;
+  padding: 3px;
+}
+
+.active-scaffold .edit-view .sub-form .footer select, 
+.active-scaffold .edit-view .sub-form .footer input, 
+.active-scaffold .new-view .sub-form .footer select, 
+.active-scaffold .new-view .sub-form .footer input {
+  background-color:#FFF;
+  border: 1px solid;
+  border-color: #EEE;
+  margin-left: 5px;
+  color: #AAA;
+}
+
+.active-scaffold .edit-view .submit:active, form .input:focus, .active-scaffold .edit-view .sub-form .footer select, .active-scaffold .sub-form .footer input:active {
+  background-color:#CCC;
+  border-color: #AAAAAA #DDDDDD #DDDDDD #AAAAAA;
+}
+
+.active-scaffold .in_place_editor_field {
+  cursor: pointer;
+}
+
+.active-scaffold tr.record td.big-bold {
+  font-weight: bold;
+  font-size: 22px;
+  color: #7C7764;
+}
+
+.active-scaffold tr.record td.big-bold .inplaceeditor-form {
+  font-weight: normal;
+  font-size: 11px;
+  color: #7C7764;
+}
+
+.active-scaffold td.importance-column {
+  text-align: center;
+}
+
+#as_stories-content .editor_field {
+  border: 1px solid #C5DBF7;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #7C7764; /* #FIXME */
+  display: block;
+  margin: auto;
+  width: 40px;
+}
+
+.active-scaffold .editor_ok_button {
+  /* display: block; */
+  display: none;
+  margin: auto;
+  background-color:#EEE;
+  border: 1px solid;
+  border-color: #DDDDDD #AAAAAA #AAAAAA #DDDDDD;
+}
+
+#as_stories-content .editor_cancel_link {
+  display: block;
+  margin: auto;
+}
+
+.active-scaffold .stories-view .description, .active-scaffold .tasks-view .description, .active-scaffold .plannings-view .description {
+  color: #7C7764;
+  margin-top: 10px;
+}
+
+.active-scaffold .show-view .nested-scaffold {
+  display: table;
+  margin: 18px auto 10px;
+  width:90%;
+}
+
+.active-scaffold .show-view .nested-scaffold .work_hours-view {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.active-scaffold .show-view .nested-scaffold h2 {
+  font-size: 16px;
+  color: #7C7764;
+}
+
+/* This will hide nested-scaffold header and counts */
+
+.active-scaffold .nested-scaffold .active-scaffold-found {
+  display: none;
+}
+.active-scaffold .nested-scaffold .active-scaffold td.inline-adapter-cell {
+  padding: 0px;
+  border: none;
+}
+
+/* Table :: Inline Adapter
+   ============================= */
+
+/* Special conf. for stand-alone view */
+
+.active-scaffold .view {
+background-color: #FFF;
+border: none;
+padding: 4px;
+}
+
+/* Special conf. for inline view */
+
+.active-scaffold .inline-adapter-cell .view {
+border: solid 1px #EEE;
+}
+
+.active-scaffold table.projects-list tbody.records td.inline-adapter-cell .view {
+border-top: solid 1px #EEE;
+}
+
+/* Nested
+   ======================== */
+
+.active-scaffold .active-scaffold td.inline-adapter-cell {
+background-color: #FFFFBB;
+padding: 4px;
+border: solid 1px #EEE;
+border-top: none;
+}
+
+.active-scaffold .active-scaffold  td {
+background-color: #FFF;
+border-bottom: solid 1px #EEE;
+border-left: solid 1px #EEE;
+}
+
+/* Table :: Record Rows
+   ============================= */
+
+.active-scaffold tr.record td {
+background-color: #FFF;
+border-bottom: solid 1px #EEE;
+border-left: none;
+}
+
+.active-scaffold tr.record td:first-child {
+border-left: solid 1px #EEE;
+}
+
+/* Removes line for projects */
+.active-scaffold tr.record td.project-record {
+border-bottom: none;
+border-left: none;
+}
+
+.active-scaffold tr.record td.sorted, .active-scaffold tr.even-record td.sorted {
+background-color: #FFF;
+border-bottom: solid 1px #EEE;
+}
+
+.active-scaffold td.numeric {
+text-align: center;
+}
+
+/* Table :: Actions (Edit, Delete)
+   ============================= */
+
+.active-scaffold tr.record td.actions {
+border-right: solid 1px #EEE;
+}
+
+/* Add top border to nested create */
+
+.active-scaffold tbody.records td.inline-adapter-cell .new-view {
+border-top: solid 1px #EEE;
+}
+
+/* Login Form */
+
+.active-scaffold .login .form-element dt {
+  width: 9em;
+}
+
+/* Form 
+   ============================== */
+
+.active-scaffold p.form-footer {
+padding-top: 10px;
+}
+
+/* This will highlight factible Stories in Story planning */
+
+.active-scaffold tr.factible td, .active-scaffold tr.factible td.sorted {
+    background-color: #EEF;
+}
+
+/* Links displayed below the record */
+
+.active-scaffold .links {
+  margin: 0.5em 0px 0.5em 0px;
+  font-size: 1em;
+  position: relative;
+  clear: both;
+}
+
+.active-scaffold .links .actions td, .active-scaffold .links .actions td:first-child {
+  border: none;
+}
+
+/* Form :: Association Sub-Forms
+   ============================== */
+
+.active-scaffold .sub-form table th {
+padding-left: 10px;
+}
+
+/* scaffold of just one record */
+
+.active-scaffold .single-record td {
+  border-right: 1px solid #EEE;
+}
+
+.active-scaffold .single-record tr.record td {
+  color: #7C7764;
+}
+
+.active-scaffold .single-record div.actions {
+  display: none;
+}
+
+/* margins for paragraphs */
+
+.active-scaffold p.clarification {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* Refresh table icon */
+
+.active-scaffold-header div.actions a.refresh_table {
+  background-position:1px 50%;
+  background-repeat:no-repeat;
+  padding-left:19px;
+  background-image:url(../../../images/tango-icon-theme/16x16/actions/view-refresh.png);
+}
+
+/* Graphs */
+
+div.wide-graph {
+  margin-bottom: 15px;
+}
+
+table.graphs {
+  margin-top: 20px;
+}
+
+table.graphs td {
+  text-align: center;
+}
+
+table.graphs td h3 {
+  margin-bottom: 5px;
+}
+
+/* mini-scaffolds table */
+
+table.mini-scaffolds {
+  margin-top: 30px;
+}
+
+table.mini-scaffolds td {
+  vertical-align: top;
+}
+
+/* Fomr select width */
+.active-scaffold .tasks-view select {
+  width: 110px;
+}
+
+/* Calendar popup icon */
+.active-scaffold .calendar_date_select_popup_icon {
+  vertical-align: middle;
+}
+
+/* Hide "Work Hours (Hide)" heading in tasks update */
+.active-scaffold .tasks-view .sub-form h5 {
+  font-weight:normal;
+  margin:21px 0 13px 10px;
+}
+
+/* List inside show-view */
+.active-scaffold .show-view li {
+  list-style-type: none;
+}
+
+.active-scaffold .show-view ul {
+  padding-left: 5px;
+}
+
+.active-scaffold .show-view li span {
+  font-weight: bold;
+}
+
+/* Empty message */
+.active-scaffold .empty-message {
+  background-color: transparent;
+  border-style:none solid solid;
+  border-width:0 1px 1px;
+  border-color: #EEE;
+}
+
+/* Empty message for Projects list */
+.active-scaffold #as_projects-empty-message {
+  border-style:none;
+}
+
+/* Fonts Ubuntu doesn't include Arial by default */
+.active-scaffold input.text-input, 
+.active-scaffold select, 
+.active-scaffold h4, .active-scaffold h5, 
+.active-scaffold-header div.actions a  {
+  font-family: Hevetica, Verdana, Arial, Sans-serif;
+}
+
+

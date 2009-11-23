@@ -1,0 +1,16 @@
+# For each of the 10 stories of each project
+# we need to create a planning
+# The last story is unplanned
+
+<% for project in 0..1 %>
+  <% for story in 0..9 %>
+
+planning_p<%= project %>_s<%= story %>:
+  story: story_p<%= project %>_<%= story %>
+  sprint: sprint_p<%= project %>_0
+  original_estimation: 16
+  unexpected: false
+  created_at: <%= story == 9 ? Date.parse("Jan, 2, 2007") : Date.parse("Jan, 1, 2007") %>
+
+  <% end %>
+<% end %>

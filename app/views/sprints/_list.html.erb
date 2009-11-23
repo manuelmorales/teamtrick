@@ -1,0 +1,6 @@
+<% # TODO  move this logic to the controller %>
+<% if params[:mode] == "planning" %>
+  <%= render :partial => 'sprints/list_planning' %>
+<% else %>
+  <%= render :partial => 'vendor/plugins/active_scaffold/frontends/default/views/list' %>
+<% end %>

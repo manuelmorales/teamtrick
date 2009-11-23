@@ -1,0 +1,88 @@
+= TeamTrick: Scrum on Rails
+
+TeamTrick is an open source web application to implement Scrum. It was created to help 
+teams to cope with all the tedious tasks of Scrum like burndown graph generation and 
+team velocity calculation.
+
+== Main Features
+
+These are the main features of TeamTrick:
+
+* It really fits Scrum: From backlog to burndown, every key point of Scrum has been 
+  implemented on TeamTrick. Nice graphs will be generated based on work hours as long 
+  as other important values like team velocity or focus factor.
+
+* It's a web application: Team members can access TeamTrick wherever they are just 
+  pointing their web browser to the right address. Install TeamTrick on a server and 
+  you're done.
+
+* It's open source: TeamTrick is released under the AGPL license. You can use it, 
+  modify it and redistribute it for free.
+
+* Built with Ruby on Rails: Ruby on Rails is one of the most powerful frameworks for 
+  web applications. It's multi platform and makes code really easy to understand and 
+  maintain.
+
+== Installation
+
+The installation process depends on whether you are using Linux, Macintosh or Windows.
+
+
+=== Ubuntu
+
+1. Install Git, Ruby, Rubygems and sqlite3
+
+  sudo apt-get install ruby rubygems rake libopenssl-ruby ruby-dev libsqlite3-dev git
+
+2. Clone the Git repository
+
+  git clone http://...
+  cd teamtrick
+
+3. Copy the default database configuration file
+
+  cp config/database.original config/database.yml
+
+4. Install Rails
+
+  sudo gem install rails --version=2.3.4
+
+5. Install required gems
+
+  touch log/development.log
+  sudo rake gems:install
+
+6. Create the database tables
+
+  rake db:migrate RAILS_ENV=production
+
+7. Load basic database data
+
+  rake db:seed RAILS_ENV=production
+  rake db:generate_sample_project RAILS_ENV=production
+
+8. Start the server
+
+  script/server -e production
+
+
+And you're done. You can now point your browser to http://localhost:3000/
+to start using TeamTrick.
+
+== License
+
+Copyright (c) 2009 Manuel Angel Morales Castro
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+

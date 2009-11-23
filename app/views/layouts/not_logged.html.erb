@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <%= render :partial => 'shared/default_head' %>
+    <%= javascript_include_tag 'curvycorners' %>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <%= render :partial => 'shared/logo' %>
+        <%= render :partial => 'shared/ie6nomore' %>
+        <div class="clear">&nbsp;</div>
+      </div>
+
+      <div id="centered-main">
+        <%= render :partial => 'shared/flash_messages' %>
+
+        <div id="yielded-content" class="active-scaffold">
+          <%= yield %>
+        </div>
+
+        <div class="clear">&nbsp;</div>
+      </div>
+
+      <div class="clear">&nbsp;</div>
+    </div>
+  </body>
+</html>

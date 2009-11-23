@@ -1,0 +1,21 @@
+<div class="active-scaffold">
+  <div class="show-view <%= "#{params[:controller]}-view" %> view">
+    <div class="active-scaffold-header">
+      <h1><%= active_scaffold_config.show.label -%></h1>
+    </div>
+
+    <h2>Burndown</h2>
+    <div class="wide-graph">
+      <%= @burndown_graph %>
+    </div>
+
+    <h2>Stories</h2>
+    <div class="nested-scaffold">
+      <%= render :active_scaffold => 'plannings', 
+        :label => '&nbsp;',
+        :params => {:project_id => params[:project_id], :mode => 'current'},
+        :constraints => { :sprint => @record.id }
+      -%>
+    </div>
+  </div>
+</div>

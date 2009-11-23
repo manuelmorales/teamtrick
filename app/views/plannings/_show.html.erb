@@ -1,0 +1,11 @@
+<h4><%= h @record.name -%></h4>
+
+<p class="description"><%= h @record.description -%><p>
+
+<div class="nested-scaffold">
+  <%= render :active_scaffold => 'tasks',
+    :params => {:mode => params[:mode]},
+    :constraints => { :story_id => @record.story.id } -%>
+</div>
+
+<%= render :partial => 'shared/form_footer' %>

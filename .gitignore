@@ -1,0 +1,14 @@
+.DS_Store
+log/*.log
+tmp/**/*
+config/database.yml
+db/*.sqlite3
+doc/api
+doc/app
+doc/rspec_report.html
+.*.swp
+public/blank_iframe.html
+public/images/calendar_date_select
+public/javascripts/calendar_date_select
+public/stylesheets/calendar_date_select
+

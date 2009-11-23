@@ -1,0 +1,51 @@
+.ie-warning {
+  width: 520px;
+  border: 1px solid #F7941D; 
+  background: #FEEFDA; 
+  text-align: center; 
+  height: 75px; 
+  float: left;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.ie-warning .content {
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+  overflow: hidden;
+  color: black;
+}
+
+.ie-warning .warning-image {
+  width: 75px;
+  float: left;
+  margin-left: 10px;
+}
+
+.ie-warning .text {
+  width: 275px;
+  float: left;
+  font-family: Arial, sans-serif;
+}
+
+.ie-warning .text .title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+.ie-warning .text .description {
+  font-size: 12px;
+  margin-top: 6px;
+  line-height: 12px;
+}
+
+.ie-warning .icon {
+  width: 75px; 
+  float: left;
+}
+
+.ie-warning .icon img {
+  border: none;
+}

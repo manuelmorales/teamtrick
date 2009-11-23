@@ -1,0 +1,15 @@
+<h4><%= h @record.name -%></h4>
+
+<p class="description"><%= h @record.description -%><p>
+
+<p>
+  <ul>
+    <li><span><%= h @record.storypoints -%></span> storypoints</li>
+
+    <% if @record.hours_left -%>
+      <li><span><%= h @record.hours_left -%></span> hours left (task-based)</li>
+    <% end -%>
+  </ul>
+</p>
+
+<div class="nested-scaffold"><%= render :active_scaffold => 'tasks', :constraints => { :story_id => @record.id } -%></div>

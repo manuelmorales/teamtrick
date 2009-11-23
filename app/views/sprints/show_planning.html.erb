@@ -1,0 +1,45 @@
+<div class="active-scaffold">
+  <div class="show-view <%= "#{params[:controller]}-view" %> view">
+    <div class="active-scaffold-header">
+      <h1><%= active_scaffold_config.show.label -%></h1>
+    </div>
+
+    <p class="clarification">Here you can choose which Stories is your team going to implement during this Sprint.</p>
+    <p class="clarification">First check that <em>Start Date</em> and <em>Finish Date</em> are right for this Sprint. 
+    Set the <em>Estimated Focus</em> Factor too.</p>
+
+    <div class="nested-scaffold single-record">
+      <%= render :active_scaffold => 'sprints', 
+        :label => "Dates & Focus Factor", 
+        :params => { :mode => params[:mode] },
+        :constraints => { :id => @record.id } 
+      -%>
+    </div>
+
+    <p class="clarification">Now choose who is gonna participate on this Sprint. If somebody is going to work half of his time on this Sprint you can specify that by setting a <em>Commitment Level</em> of 50%.</p>
+
+    <div class="nested-scaffold">
+      <%= render :active_scaffold => 'commitments', 
+        :params => {:project_id => params[:project_id]},
+        :constraints => { :sprint => @record.id }
+      -%>
+    </div>
+
+    <p class="clarification">Stories with blue background will be added to this Sprint when you click <em>Finish Sprint Planning</em>. That is automatically calculated from Commitments, <em>Estimated Focus Factor</em>.</p>
+
+    <p class="clarification">Don't forget to estimate each Story's Tasks.</p>
+
+    <div class="nested-scaffold">
+      <%= render :active_scaffold => 'stories', 
+        :params => {
+        :project_id => params[:project_id], 
+        :mode => "planning",
+        :sprint => @record.id.to_s
+      } -%>
+    </div>
+
+    <div class="links right">
+      <%= button_to "Finish Planning", finish_planning_project_sprint_path(@record.project, @record), :class => 'submit' %>
+    </div>
+  </div>
+</div>

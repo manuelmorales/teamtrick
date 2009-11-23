@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <%= render :partial => 'shared/default_head' %>
+    <%= javascript_include_tag "swfobject" %>
+    <%= calendar_date_select_includes "blue" %>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="header">
+        <%= render :partial => 'shared/logo' %>
+        <%= render :partial => 'shared/ie6nomore' %>
+
+        <div class="clear">&nbsp;</div>
+        <div id="user-menu">
+          <%= link_to current_user.real_name,user_path(current_user) %> | 
+          <%= link_to "Logout", logout_path %>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <%= render :partial => 'shared/sidebar' %>
+      </div>
+
+      <div id="main">
+        <div class="top"><span>&nbsp;</span></div>
+        <div class="center-content">
+          <%= render :partial => 'shared/flash_messages' %>
+
+          <%= yield %>
+
+          <div id="footer"><%= render :partial => 'shared/footer' -%></div>
+        </div>
+        <div class="bottom"><span></span></div>
+      </div>
+
+      <div class="clear">&nbsp;</div>
+    </div>
+  </body>
+</html>

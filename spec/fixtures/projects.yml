@@ -1,0 +1,8 @@
+# We have 2 projects, 
+# project_0 and project_1
+
+<% for i in 0..1 %>
+project_<%= i %>:
+  name: Project <%= i %>
+  description: This is a brief description of Project <%= i %> so every employee understand what is it about.
+<% end %>

@@ -1,0 +1,16 @@
+<h4><%= h @record.name -%></h4>
+
+<p class="description"><%= h @record.description -%><p>
+
+<p>
+  <ul>
+    <li><span><%= h @record.hours_left -%></span> hours left</li>
+  </ul>
+</p>
+
+<% if ['current', 'closed'].include? params[:mode] -%>
+  <div class="nested-scaffold">
+    <%= render :active_scaffold => 'work_hours',
+      :constraints => { :task_id => @record.id } -%>
+  </div>
+<% end -%>

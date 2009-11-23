@@ -1,0 +1,10 @@
+<% record ||= list_record %>
+<% hidden ||= nil %>
+<% dont_show_calculations ||= nil %>
+<% locals = {:hidden => hidden, :dont_show_calculations => dont_show_calculations} %>
+
+<% if params[:mode] == 'planning' %>
+  <%= render :partial => "sprints/list_record_#{params[:mode]}", :collection => [record], :locals => locals %>
+<% else %>
+  <%= render :partial => 'vendor/plugins/active_scaffold/frontends/default/views/list_record', :collection => [record], :locals => locals %>
+<% end %>

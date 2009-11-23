@@ -1,0 +1,40 @@
+# Projects 0 and 1 has 10 stories
+# temporary_stimation is always 40
+
+<% for project in 0..1 %>
+  <% for i in 0..9 %>
+
+story_p<%= project %>_<%= i %>:
+  name: Story number <%= i %>
+  storypoints: <%= 40 %>
+  importance: <%= i %>
+  project: project_<%= project %>
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis lacus, lobortis et luctus sed, fermentum in odio. Nam in neque massa, auctor rutrum massa.
+  
+  <% end %>
+<% end %>
+
+<% for project in 0..1 %>
+  <% for i in 0..4 %>
+
+finished_story_p<%= project %>_<%= i %>:
+  name: Finished Story number <%= i %>
+  storypoints: <%= 40 %>
+  importance: <%= i %>
+  project: project_<%= project %>
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis lacus, lobortis et luctus sed, fermentum in odio. Nam in neque massa, auctor rutrum massa.
+  
+  <% end %>
+<% end %>
+
+<% for project in 0..1 %>
+  <% i = 10 %>
+
+story_without_tasks_p<%= project %>_<%= i %>:
+  name: Story without tasks number <%= i %>
+  storypoints: <%= 40 %>
+  importance: <%= i %>
+  project: project_<%= project %>
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis lacus, lobortis et luctus sed, fermentum in odio. Nam in neque massa, auctor rutrum massa.
+  
+<% end %>

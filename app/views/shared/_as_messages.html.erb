@@ -1,0 +1,15 @@
+<tbody class="messages">
+  <tr>
+    <td colspan="<%= active_scaffold_config.list.columns.length + 1 -%>" class="messages-container">
+      <div id="<%= active_scaffold_messages_id -%>">
+        <%= render :partial => 'messages' %>
+      </div>
+      <p class="filtered-message" <%= ' style="display:none;" ' unless @filtered %>>
+        <%= as_(active_scaffold_config.list.filtered_message) %>
+      </p>
+      <p id="<%= empty_message_id %>" class="empty-message" <%= ' style="display:none;" ' unless @page.items.empty? %>>
+        <%= as_(active_scaffold_config.list.no_entries_message) %>
+      </p>
+    </td>
+  </tr>
+</tbody>

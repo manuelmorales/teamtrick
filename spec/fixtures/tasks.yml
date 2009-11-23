@@ -1,0 +1,32 @@
+# For each of the 10 stories of each project
+# there will be 4 tasks with an original 
+# stimation of 16
+
+<% for project in 0..1 %>
+  <% for story in 0..9 %>
+    <% for task in 0..3 %>
+
+task_p<%= project %>_s<%= story %>_<%= task %>:
+  name: Task number <%= task %>
+  story: story_p<%= project %>_<%= story %>
+  original_estimation: 16
+  hours_left: 16
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis lacus, lobortis et luctus sed, fermentum in odio. Nam in neque massa, auctor rutrum massa.
+
+    <% end %>
+  <% end %>
+<% end %>
+
+<% for project in 0..1 %>
+  <% for story in 0..4 %>
+  <% task = 0 %>
+
+finished_task_p<%= project %>_s<%= story %>_<%= task %>:
+  name: Finished Task number <%= task %>
+  story: finished_story_p<%= project %>_<%= story %>
+  original_estimation: 16
+  hours_left: 0
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla turpis lacus, lobortis et luctus sed, fermentum in odio. Nam in neque massa, auctor rutrum massa.
+
+  <% end %>
+<% end %>

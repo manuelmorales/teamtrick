@@ -1,0 +1,47 @@
+<div class="active-scaffold">
+  <div class="show-view <%= "#{params[:controller]}-view" %> view">
+    <div class="active-scaffold-header">
+      <h1><%= active_scaffold_config.show.label -%></h1>
+    </div>
+
+    <h2>Performance</h2>
+    <p>
+      <ul>
+        <li>
+          <strong>Focus factor:</strong> 
+          <%= "#{@record.focus_factor.round(2)} real / #{@record.estimated_focus_factor} estimated" -%>.
+        </li>
+        <li>
+          <strong>Team velocity:</strong> 
+          <%= @record.team_velocity -%> storypoints.
+        </li>
+        <li>
+          <strong>Hours commited:</strong> 
+          <%= @record.hours_left_for_day @record.start_date -%> hours.
+        </li>
+        <li>
+          <strong>Hours worked:</strong> 
+          <%= @record.work_hours_sum -%> hours.
+        </li>
+        <li>
+          <strong>Hours left to finish:</strong> 
+          <%= @record.hours_left_for_day (@record.finish_date + 1) -%> hours.
+        </li>
+      </ul>
+    </p>
+
+    <h2>Burndown</h2>
+    <div class="wide-graph">
+      <%= @burndown_graph %>
+    </div>
+
+    <h2>Stories</h2>
+    <div class="nested-scaffold">
+      <%= render :active_scaffold => 'plannings', 
+        :label => '&nbsp;',
+        :params => {:project_id => params[:project_id], :mode => params[:mode]},
+        :constraints => { :sprint => @record.id }
+      -%>
+    </div>
+  </div>
+</div>
