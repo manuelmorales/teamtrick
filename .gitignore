@@ -15,4 +15,5 @@ vendor/bundler_gems/gems
 vendor/bundler_gems/specifications
 vendor/bundler_gems/doc
 vendor/bundler_gems/environment.rb
+vendor/bundler_gems/cache
 bin

@@ -10,10 +10,10 @@ module Rails
 
     def extend_environment
       Rails::Initializer.class_eval do
-        old_load = instance_method(:load_environment)
-        define_method(:load_environment) do
-          Bundler.require_env RAILS_ENV
+        old_load = instance_method(:load_gems)
+        define_method(:load_gems) do
           old_load.bind(self).call
+          Bundler.require_env RAILS_ENV
         end
       end
     end
