@@ -11,6 +11,11 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  # This is for gem-bundler to find all our gems
+  # http://rubyglasses.blogspot.com/2009/11/convert-from-configgem-to-gembundler.html
+  require 'vendor/bundler_gems/environment.rb' # add dependenceies to load paths
+  Bundler.require_env :optional_environment    # actually require the files
+
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -20,19 +25,9 @@ Rails::Initializer.run do |config|
   # you must remove the Active Record framework.
   # config.frameworks -= [ :active_record, :active_resource, :action_mailer ]
 
-  # Specify gems that this application depends on. 
-  # They can then be installed with "rake gems:install" on new installations.
-  # config.gem "bj"
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "aws-s3", :lib => "aws/s3"
+  # These gems are not able to load using bundler.
   config.gem "calendar_date_select"
   config.gem "faker"
-  config.gem "populator"
-  config.gem "sqlite3-ruby", :lib => 'sqlite3'
-
-  # Gems for testing
-  # config.gem 'rspec'
-  # config.gem 'rspec-rails'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -11,4 +11,8 @@ public/blank_iframe.html
 public/images/calendar_date_select
 public/javascripts/calendar_date_select
 public/stylesheets/calendar_date_select
-
+vendor/bundler_gems/gems
+vendor/bundler_gems/specifications
+vendor/bundler_gems/doc
+vendor/bundler_gems/environment.rb
+bin
