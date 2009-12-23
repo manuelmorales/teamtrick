@@ -1,0 +1,84 @@
+---
+- :name: Capacidad para leer una tarjeta SIM
+  :description: Leerla, perdir el PIN y conectarse a la red GSM.
+
+- :name: Capacidad para recibir y realizar llamadas
+  :description: LLamar, colgar y descolgar.
+
+- :name: Permitir mandar y recibir SMS
+  :description: Sólo lo básico.
+
+- :name: Agenda
+  :description: Tanto en la SIM como en memoria interna.
+
+- :name: Registro de llamadas
+  :description: Distinguiendo de realizadas, recibidas y perdidas.
+
+- :name: Poder escoger un tono de llamada
+  :description: De entre varios preconfigurados.
+
+- :name: Soporte para alarmas
+  :description: Con posibilidad de "dormir 10 minutos más".
+
+- :name: Soporte para calendario
+  :description: Con posibilidad de asociar alarmas a fechas.
+
+- :name: Poder cambiar el fondo de pantalla
+  :description: Soportando BMP y JPG.
+
+- :name: Calculadora
+  :description: No científica.
+
+- :name: Aplicación para tomar notas
+  :description: Con soporte Unicode.
+
+- :name: Capacidad de enviar y recibir MMS
+  :description: Sólo lo básico.
+
+- :name: Capacidad de hacer fotos
+  :description: Pudiendo enviarlas dentro de un MMS.
+
+- :name: Capacidad de grabar vídeos
+  :description: Pudiendo enviarlos dentro de un MMS.
+
+- :name: Capacidad de reproducir MP3
+  :description: Pudiendo usarlos como tonos.
+
+- :name: Juegos Java
+  :description: Recibidos por MMS.
+
+- :name: Lector de tarjetas
+  :description: MicroSD a ser posible.
+
+- :name: Capacidad de navegar por Internet
+  :description: Mediante un navegador básico.
+
+- :name: Capacidad de enviar y recibir correos electrónicos.
+  :description: desde el menú de mensajes.
+
+- :name: Soporte Bluetooth
+  :description: Pudiendo usar manos libres y transferencia de ficheros.
+
+- :name: Juegos en 3D
+  :description: Gracias a un determindo chip acelerador gráfico.
+
+- :name: Añadir navegador GPS
+  :description: Guiada por voz.
+
+- :name: Añadir juegos multiusuario a través de Bluetooh
+  :description: O de Internet también.
+
+- :name: Brújula electrónica
+  :description: para poder mostrar realidad aumentada.
+
+- :name: Lector de PDF
+  :description: Con capacidad de hacer zoom.
+
+- :name: Soporte para redes wifi.
+  :description: Con encriptación WEP y WPA.
+
+- :name: Integración con Facebook
+  :description: Con capacidad de actualizar tu estado y subir fotos.
+
+- :name: Integración con Youtube.
+  :description: Con capacidad de subir tus vídeos.
