@@ -19,8 +19,13 @@ namespace :teamtrick do
     system 'script/unpack'
   end
 
+  desc 'This will set RAILS_ENV to "production"'
+  task :force_production_environment do
+    RAILS_ENV = 'production'
+  end
+
   desc "This will unpack gems and configure the application"
-  task :bundle => [:install, :unpack]
+  task :bundle => [:clean, :force_production_environment, :install, :unpack]
 
   desc "This will delete your database and all files created by TeamTrick. Very destructive!!!"
   task :clean do
@@ -33,4 +38,16 @@ namespace :teamtrick do
       FileUtils.rm_r f
     end
   end
+
+  # desc "This will delete everything and create a zip file with a just configured app for Linux"
+  # task :bundle_linux => [:clean, :install, :unpack] do
+  #   system 'zip -r ../teamtrick-linux.zip ../teamtrick'
+  # end
+
+  # desc "This will delete everything and create a zip file with a just configured app for Windows"
+  # task :bundle_windows => [:clean, :install, :unpack] do
+  #   FileUtils.rm_r 'vendor/gems/sqlite3-ruby-1.2.5'
+  #   FileUtils.cp_r 'vendor/native/sqlite3-ruby-1.2.5-x86-mingw32', 'vendor/gems/sqlite3-ruby-1.2.5'
+  #   system 'zip -r ../teamtrick-windows.zip ../teamtrick'
+  # end
 end

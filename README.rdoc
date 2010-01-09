@@ -34,7 +34,7 @@ The installation process depends on whether you are using Linux, Macintosh or Wi
 
 1. Install Git, Ruby, Rubygems and sqlite3
 
-  sudo apt-get install ruby rubygems rake libopenssl-ruby ruby-dev libsqlite3-dev git
+  sudo apt-get install ruby rubygems rake libopenssl-ruby ruby-dev libsqlite3-dev git-core
 
 2. Clone the Git repository
 
