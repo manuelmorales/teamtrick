@@ -7,6 +7,10 @@ module StoriesHelper
     end
   end
 
+  def name_without_link_column r
+    h "#{r.name}"
+  end
+
   def list_row_class story
     if params[:mode] == "planning"
       factible_stories.include?(story) ? "factible" : "non-factible"

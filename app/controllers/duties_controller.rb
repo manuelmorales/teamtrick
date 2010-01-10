@@ -6,7 +6,6 @@ class DutiesController < ApplicationController
     config.columns[:user].form_ui = :select
     config.columns[:role].form_ui = :select
     config.columns[:role].clear_link
-    config.columns[:user].actions_for_association_links = [:show]
     config.columns[:user].description = 'You can create new users <a href="/users/">here</a>.'
     config.show.columns = [:user, :role]
     config.list.columns =  [:user, :role]
@@ -15,7 +14,6 @@ class DutiesController < ApplicationController
     config.search.link = false
     config.create.link.label = "Add user"
     config.create.label = "Add user"
-    config.list.no_entries_message = "No user plays a role on this project yet.<br /> Click <em>Add user</em> to add one."
   end
 
   protected
@@ -26,7 +24,14 @@ class DutiesController < ApplicationController
       %W{new edit delete}.each do |action|
         active_scaffold_config.action_links.delete action
       end
-      active_scaffold_config.list.no_entries_message = "No user plays a role on this project yet.<br /><br /> Click <em>Users & Roles</em> to start adding them."
+      active_scaffold_config.list.no_entries_message = 
+        "No user plays a role on this project yet.<br /><br /> Click <em>Users & Roles</em> to start adding them."
+    else
+      active_scaffold_config.action_links << ActiveScaffold::Config::Create.link
+      active_scaffold_config.action_links << ActiveScaffold::Config::Update.link
+      active_scaffold_config.action_links << ActiveScaffold::Config::Delete.link
+      active_scaffold_config.list.no_entries_message = 
+        "No user plays a role on this project yet.<br /> Click <em>Add user</em> to add one."
     end
   end
 

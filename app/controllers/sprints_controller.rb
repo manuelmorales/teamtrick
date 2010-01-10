@@ -17,8 +17,6 @@ class SprintsController < ApplicationController
       :project, 
       :status,
     ]
-    config.list.columns = [:iteration, :dates_with_link, :focus_factor, :status]
-    config.show.columns = [:dates_with_link, :estimated_focus_factor]
     config.create.columns = [:start_date, :finish_date, :number_of_workdays, :estimated_focus_factor, :project]
     config.update.columns = [:start_date, :finish_date, :number_of_workdays, :estimated_focus_factor, :project]
     config.columns[:start_date].form_ui = :calendar_date_select
@@ -139,16 +137,33 @@ class SprintsController < ApplicationController
   protected
 
   def column_selection
+
+    # Planning mode /projects/1/sprint/3/planning
     if params[:mode] == 'planning'
-      active_scaffold_config.show.columns.exclude [:dates_with_link, :estimated_focus_factor]
+      active_scaffold_config.show.columns.exclude active_scaffold_config.show.columns.map(&:name)
       active_scaffold_config.show.columns << [:dates, :estimated_focus_factor]
+
+    # Mini mode /projects/1
     elsif params[:mode] == 'mini'
-      active_scaffold_config.list.columns.exclude [:iteration, :dates_with_link, :focus_factor, :status]
+      active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
       active_scaffold_config.list.columns << [:dates, :status]
+
       %W{new edit delete}.each do |action|
         active_scaffold_config.action_links.delete action
       end
+
       active_scaffold_config.list.no_entries_message = "No sprint is defined for this project yet.<br /><br /> Click <em>Sprints</em> to start adding them."
+
+    # Normal mode /project/1/sprints
+    else
+      active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
+      active_scaffold_config.list.columns << [:iteration, :dates_with_link, :focus_factor, :status]
+
+      active_scaffold_config.action_links << ActiveScaffold::Config::Create.link
+      active_scaffold_config.action_links << ActiveScaffold::Config::Update.link
+      active_scaffold_config.action_links << ActiveScaffold::Config::Delete.link
+
+      active_scaffold_config.list.no_entries_message = "No sprint is defined for this project yet.<br /> Click <em>Create new</em> to add one."
     end
   end
 

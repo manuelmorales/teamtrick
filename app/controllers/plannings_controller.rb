@@ -1,6 +1,4 @@
 class PlanningsController < ApplicationController
-  before_filter :column_selection
-
   active_scaffold do |config|
     config.columns = [:story, :name, :original_estimation, :hours_left, :description, :tasks, :sprint, :unexpected]
     config.show.columns = [:description, :tasks]
@@ -26,12 +24,6 @@ class PlanningsController < ApplicationController
   end
 
   private
-
-  def column_selection
-    if params[:mode] == 'current'
-      active_scaffold_config.list.columns.exclude [:original_estimation]
-    end
-  end
 
   def show_authorized?
     current_user.projects_to_show.include? current_project

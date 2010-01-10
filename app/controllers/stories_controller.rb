@@ -26,10 +26,8 @@ class StoriesController < ApplicationController
     config.columns[:description].options = {:rows => 4, :truncate => 30}
 
     config.list.per_page = 12
-    config.action_links << ActiveScaffold::DataStructures::ActionLink.new(:refresh, :action => 'refresh_table', :position => false)
 
     config.subform.layout = :vertical
-    config.list.no_entries_message = "No story has been created yet.<br /> Click <em>Create new</em> to add one."
   end
 
   def new
@@ -72,16 +70,27 @@ class StoriesController < ApplicationController
 
   def column_selection
     if params[:mode] == 'planning'
-      active_scaffold_config.list.columns.exclude [:description, :storypoints]
-      active_scaffold_config.list.columns. << [:hours_left]
+      active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
+      active_scaffold_config.list.columns. << [:importance, :name, :hours_left]
+      restore_links_and_no_entries_message
     elsif params[:mode] == 'mini'
-      active_scaffold_config.columns[:name].clear_link
-      active_scaffold_config.list.columns.exclude [:importance]
-      %W{new edit delete refresh_table}.each do |action|
-        active_scaffold_config.action_links.delete action
-      end
+      active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
+      active_scaffold_config.list.columns. << [:name_without_link, :hours_left]
+      %W{new edit delete refresh_table}.each{|action| active_scaffold_config.action_links.delete action}
       active_scaffold_config.list.no_entries_message = "No story has been created yet.<br /><br /> Click <em>Backlog</em> to start adding them."
+    else
+      active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
+      active_scaffold_config.list.columns. << [:importance, :name, :storypoints]
+      restore_links_and_no_entries_message
     end
+  end
+
+  def restore_links_and_no_entries_message
+    active_scaffold_config.action_links << ActiveScaffold::Config::Create.link
+    active_scaffold_config.action_links << ActiveScaffold::Config::Update.link
+    active_scaffold_config.action_links << ActiveScaffold::Config::Delete.link
+    active_scaffold_config.action_links << ActiveScaffold::DataStructures::ActionLink.new(:refresh, :action => 'refresh_table', :position => false)
+    active_scaffold_config.list.no_entries_message = "No story has been created yet.<br /> Click <em>Create new</em> to add one."
   end
 
   def enable_inplace_edit

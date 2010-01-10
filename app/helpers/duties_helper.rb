@@ -6,4 +6,8 @@ module DutiesHelper
       super
     end
   end
+
+  def user_column r
+    link_to(r.user.name, user_path(r.user)) if r.user
+  end
 end

@@ -28,7 +28,10 @@ class TasksController < ApplicationController
   def column_selection
     if ['current', 'closed'].include? params[:mode]
       active_scaffold_config.update.columns.exclude [:original_estimation]
+      active_scaffold_config.create.columns << [:work_hours]
+      active_scaffold_config.update.columns << [:work_hours]
     else
+      active_scaffold_config.update.columns << [:original_estimation]
       active_scaffold_config.create.columns.exclude [:work_hours]
       active_scaffold_config.update.columns.exclude [:work_hours]
     end
