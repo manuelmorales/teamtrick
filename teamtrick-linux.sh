@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ruby script\server -e production
+ruby script/server -e production
