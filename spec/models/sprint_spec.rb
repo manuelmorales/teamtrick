@@ -90,7 +90,7 @@ describe Sprint do
 
     check_all_overlapping_possibilities_for( existent_sprint, conflicting_sprint) do |conflicting_sprint| 
       conflicting_sprint.should_not be_valid
-      conflicting_sprint.errors.first.should_not be_nil
+      conflicting_sprint.errors.should_not be_empty
     end
   end
 
