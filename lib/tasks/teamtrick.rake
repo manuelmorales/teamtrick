@@ -7,6 +7,7 @@ namespace :teamtrick do
       FileUtils.cp(origin, target) 
       puts "Created #{target}"
     end
+    sleep(1)
   end
 
   desc "This creates and sets up the database from scratch"
@@ -25,7 +26,9 @@ namespace :teamtrick do
   end
 
   desc "This will unpack gems and configure the application"
-  task :bundle => [:clean, :force_production_environment, :install, :unpack]
+  task :bundle => [:clean, :force_production_environment, :install, :unpack] do
+    @platform = "linux"
+  end
 
   desc "This will delete your database and all files created by TeamTrick. Very destructive!!!"
   task :clean do
@@ -39,15 +42,28 @@ namespace :teamtrick do
     end
   end
 
-  # desc "This will delete everything and create a zip file with a just configured app for Linux"
-  # task :bundle_linux => [:clean, :install, :unpack] do
-  #   system 'zip -r ../teamtrick-linux.zip ../teamtrick'
-  # end
+  desc "This will take an already bundled TeamTrick and will make it Windows friendly"
+  task :convert_bundle_to_windows do
+    @platform = "windows"
+    FileUtils.rm_r 'vendor/gems/sqlite3-ruby-1.2.5'
+    FileUtils.cp_r 'vendor/native/sqlite3-ruby-1.2.5-x86-mingw32', 'vendor/gems/sqlite3-ruby-1.2.5'
+  end
 
-  # desc "This will delete everything and create a zip file with a just configured app for Windows"
-  # task :bundle_windows => [:clean, :install, :unpack] do
-  #   FileUtils.rm_r 'vendor/gems/sqlite3-ruby-1.2.5'
-  #   FileUtils.cp_r 'vendor/native/sqlite3-ruby-1.2.5-x86-mingw32', 'vendor/gems/sqlite3-ruby-1.2.5'
-  #   system 'zip -r ../teamtrick-windows.zip ../teamtrick'
-  # end
+  desc "This will create a zip file with this application at ../teamtrick-$platform.zip"
+  task :zip do
+    current_dir = File.basename FileUtils.pwd
+    @platform ||= "linux"
+    zip_file_name = "teamtrick-#{@platform}.zip"
+
+    FileUtils.cd '..' do
+      FileUtils.rm zip_file_name if File.exists? zip_file_name
+      system "zip -r #{zip_file_name} #{current_dir} -x \"teamtrick/.git/*\""
+    end
+  end
+
+  desc "This will bundle and zip the application for both, linux and windows at ../teamtrick-linux.zip and ../teamtrick-windows.zip"
+  task :zip_all => [:bundle, :zip, :convert_bundle_to_windows] do
+    Rake::Task["teamtrick:zip"].reenable
+    Rake::Task["teamtrick:zip"].invoke
+  end
 end
