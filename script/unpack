@@ -6,3 +6,4 @@
 system 'rake rails:freeze:gems'
 system 'rake gems:unpack'
 system 'rake gems:build'
+puts "Gems successfully unpacked"

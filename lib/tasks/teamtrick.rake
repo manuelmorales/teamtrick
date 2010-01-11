@@ -7,11 +7,12 @@ namespace :teamtrick do
       FileUtils.cp(origin, target) 
       puts "Created #{target}"
     end
-    sleep(1)
   end
 
   desc "This creates and sets up the database from scratch"
-  task :install => [:configure, :environment, 'db:migrate', 'db:seed', 'db:generate_sample_project']
+  task :install => [:configure, :environment, 'db:migrate', 'db:seed', 'db:generate_sample_project'] do
+    puts "TeamTrick successfully installed"
+  end
 
   desc "This will unpack all gems including Rails"
   task :unpack do
@@ -22,16 +23,19 @@ namespace :teamtrick do
 
   desc 'This will set RAILS_ENV to "production"'
   task :force_production_environment do
+    puts "Forcing production environment"
     RAILS_ENV = 'production'
   end
 
   desc "This will unpack gems and configure the application"
   task :bundle => [:clean, :force_production_environment, :install, :unpack] do
     @platform = "linux"
+    puts "TeamTrick successfully bundled for Linux"
   end
 
   desc "This will delete your database and all files created by TeamTrick. Very destructive!!!"
   task :clean do
+    puts "Completely cleaning TeamTrick"
     file_list = File.read(".gitignore").split("\n")
     file_list << "vendor/gems"
     file_list << "vendor/rails"
@@ -47,6 +51,7 @@ namespace :teamtrick do
     @platform = "windows"
     FileUtils.rm_r 'vendor/gems/sqlite3-ruby-1.2.5'
     FileUtils.cp_r 'vendor/native/sqlite3-ruby-1.2.5-x86-mingw32', 'vendor/gems/sqlite3-ruby-1.2.5'
+    puts "TeamTrick successfully bundled for Windows"
   end
 
   desc "This will create a zip file with this application at ../teamtrick-$platform.zip"
@@ -58,6 +63,7 @@ namespace :teamtrick do
     FileUtils.cd '..' do
       FileUtils.rm zip_file_name if File.exists? zip_file_name
       system "zip -r #{zip_file_name} #{current_dir} -x \"teamtrick/.git/*\""
+      puts "TeamTrick successfully zipped at ../#{zip_file_name}"
     end
   end
 
