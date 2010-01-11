@@ -27,48 +27,29 @@ These are the main features of TeamTrick:
 
 == Installation
 
-The installation process depends on whether you are using Linux, Macintosh or Windows.
+The easiest way to install TeamTrick is to download the bundled zip file from 
+http://teamtrick.net. It takes very few time to have TeamTrick up and running.
 
 
-=== Ubuntu
+=== Installation from Source
 
-1. Install Git, Ruby, Rubygems and sqlite3
+If you are a Rails developer or want try to install TeamTrick by yourself here is how:
 
-  sudo apt-get install ruby rubygems rake libopenssl-ruby ruby-dev libsqlite3-dev git-core
+1. Configure the database
 
-2. Clone the Git repository
+  rake teamtrick:configure
 
-  git clone git://github.com/manuelmorales/teamtrick.git
-  cd teamtrick
+2. Install the required gems
 
-3. Copy the default database configuration file
+  rake gems:install
 
-  cp config/database.original config/database.yml
+3. Run the installation Rake task
 
-4. Install Rails
+  rake teamtrick:install
 
-  sudo gem install rails --version=2.3.4
-
-5. Install required gems
-
-  touch log/development.log
-  sudo rake gems:install
-
-6. Create the database tables
-
-  rake db:migrate RAILS_ENV=production
-
-7. Load basic database data
-
-  rake db:seed RAILS_ENV=production
-  rake db:generate_sample_project RAILS_ENV=production
-
-8. Start the server
-
-  script/server -e production
-
-
-And you're done. You can now point your browser to http://localhost:3000
+And that's all.
+You can now start the server with +script/server+ 
+and point your browser to http://localhost:3000
 to start using TeamTrick.
 
 == License
