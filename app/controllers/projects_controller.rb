@@ -9,6 +9,11 @@ class ProjectsController < ApplicationController
     config.list.no_entries_message = "No projects created yet.<br /> Click <em>Create New</em> to add one."
   end
 
+  def stats_for_date
+    do_show
+    @date = Date.parse params[:date]
+  end
+
   def show
     do_show
     successful?

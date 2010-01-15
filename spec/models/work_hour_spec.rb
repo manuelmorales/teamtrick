@@ -55,6 +55,13 @@ describe "WorkHour integration" do
       WorkHour.with_project(@project).should_not be_nil
       WorkHour.with_project(@project).map(&:project).uniq.first.should == @project
     end
+
+    it "should work with project.id too" do
+      @project = projects(:project_0)
+
+      WorkHour.with_project(@project.id).should_not be_nil
+      WorkHour.with_project(@project.id).map(&:project).uniq.first.should == @project
+    end
   end
 
   describe "with_date_between named scope" do

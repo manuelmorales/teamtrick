@@ -79,6 +79,25 @@ describe ProjectsController do
     end
   end
 
+  describe "responding to GET stats_for_date" do
+    before :each do
+      @current_project = projects(:project_0)
+    end
+
+    def do_request
+      get :stats_for_date, :id => projects(:project_0).id, :date => "2007-01-01"
+    end
+
+    it_should_require_login
+    it_should_success_for_admins_without_duty
+    it_should_block_users_without_duty_for_current_project
+
+    it "should expose the requested project as @record" do
+      do_request
+      assigns[:record].should == projects(:project_0)
+    end
+  end
+
   describe "responding to GET new" do
     def do_request
       get :new

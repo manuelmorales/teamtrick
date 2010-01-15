@@ -42,7 +42,10 @@ ActionController::Routing::Routes.draw do |map|
    projects.resources :duties, :active_scaffold => true
    projects.resources :stories, :active_scaffold => true
    projects.resources :tasks, :active_scaffold => true
+   projects.connect ':id/statistics_for_day/:date', :controller => :projects 
   end
+
+  map.stats_for_date 'projects/:id/stats_for_date/:date/', :controller =>  'projects', :action => 'stats_for_date'
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => 'projects', :action => 'index'

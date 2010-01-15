@@ -1,0 +1,10 @@
+<%= title "Stats for Date #{h(@date)}" %>
+
+<div class="active-scaffold">
+  <div class="nested-scaffold">
+    <%= render :active_scaffold => 'work_hours',
+      :params => {:project_id => @record.id, :with_tasks => true},
+      :constraints => {:date => @date}
+    -%>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 class WorkHoursController < ApplicationController
+  before_filter :column_selection
+
   active_scaffold do |config|
     config.columns = [:date, :user, :hours, :task]
     config.show.columns.exclude :task
@@ -17,6 +19,20 @@ class WorkHoursController < ApplicationController
   end
 
   protected
+
+  def column_selection
+    active_scaffold_config.list.columns.exclude active_scaffold_config.list.columns.map(&:name)
+
+    if params[:with_tasks]
+      active_scaffold_config.list.columns << [ :user, :hours, :task_with_story]
+    else
+      active_scaffold_config.list.columns << [ :date, :user, :hours]
+    end
+  end
+
+  def named_scopes_for_collection
+    return "with_project(#{current_project.id})" if current_project
+  end
 
   def before_create_save record
     record.old_hours_left = record.task.hours_left if record.task

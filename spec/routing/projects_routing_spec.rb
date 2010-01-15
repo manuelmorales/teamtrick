@@ -29,6 +29,10 @@ describe ProjectsController do
     it "maps #destroy" do
       route_for(:controller => "projects", :action => "destroy", :id => "1").should == {:path =>"/projects/1", :method => :delete}
     end
+
+    it "maps #stats_for_date" do
+      route_for(:controller => "projects", :action => "stats_for_date", :id => "1", :date => "2099-12-31").should == "/projects/1/stats_for_date/2099-12-31"
+    end
   end
 
   describe "route recognition" do
@@ -58,6 +62,10 @@ describe ProjectsController do
   
     it "generates params for #destroy" do
       params_from(:delete, "/projects/1").should == {:controller => "projects", :action => "destroy", :id => "1"}
+    end
+
+    it "generates params for #stats_for_date" do
+      params_from(:get, "/projects/1/stats_for_date/2099-12-31").should == {:controller => "projects", :action => "stats_for_date", :id => "1", :date => "2099-12-31"}
     end
   end
 end

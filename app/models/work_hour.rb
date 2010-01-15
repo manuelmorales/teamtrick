@@ -10,7 +10,7 @@ class WorkHour < ActiveRecord::Base
   belongs_to :user
   belongs_to :task
 
-  named_scope :with_project, lambda{|p| {:joins => {:task => :story}, :conditions => ['stories.project_id = ?', p.id]}}
+  named_scope :with_project, lambda{|p| {:joins => {:task => :story}, :conditions => ['stories.project_id = ?', p.is_a?(Integer) ? p : p.id]}}
   named_scope :with_task, lambda{|t| {:conditions => {:task_id => t.id}}}
   named_scope :by_date, :order => "date ASC"
   named_scope :with_date_between, lambda{|range| {:conditions => {:date => range}}}
