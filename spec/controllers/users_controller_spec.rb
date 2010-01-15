@@ -77,7 +77,7 @@ describe UsersController do
 
   describe "responding to POST create" do
     def do_request
-      post :create, :record => user_required_values
+      post :create, :record => user_required_values.merge({:available_hours_per_week => "35"})
     end
 
     it_should_require_login
@@ -92,7 +92,7 @@ describe UsersController do
 
       it "should redirect to index" do
         do_request
-        response.should redirect_to(users_path)
+        response_should_be_right
       end
     end
     
@@ -163,7 +163,7 @@ describe UsersController do
 
       it "should redirect to index" do
         do_request
-        response.should redirect_to(users_path)
+        response_should_be_right
       end
     end
     

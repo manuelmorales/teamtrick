@@ -124,7 +124,7 @@ describe ProjectsController do
 
       it "should redirect to the projects list" do
         do_request
-        response.should redirect_to(projects_path)
+        response_should_be_right
       end
     end
     
@@ -170,7 +170,7 @@ describe ProjectsController do
 
       it "should redirect to the projects list" do
         do_request
-        response.should redirect_to(projects_path)
+        response_should_be_right
       end
     end
     

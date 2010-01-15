@@ -9,7 +9,7 @@ module ApplicationHelper
     if response.request.method == :get
       response.should be_success
     else
-      response.should redirect_to(:action => :index)
+      response.redirected_to.stringify_keys["action"].should == "index"
     end
 
     response.should_not render_template("message/index")
