@@ -1,4 +1,6 @@
 require 'test/unit'
+require 'rubygems'
+require 'mocha'
 
 ENV['RAILS_ENV'] = 'test'
 ENV['RAILS_ROOT'] ||= File.join(File.dirname(__FILE__), 'mock_app')
@@ -23,8 +25,9 @@ for file in %w[model_stub const_mocker]
   require File.join(File.dirname(__FILE__), file)
 end
 
-ModelStub.connection.instance_eval do
-  def quote_column_name(name)
-    name
+class Test::Unit::TestCase
+  protected
+  def config_for(klass, namespace = nil)
+    ActiveScaffold::Config::Core.new("#{namespace}#{klass.to_s.underscore.downcase}")
   end
 end

@@ -71,6 +71,7 @@ module ActiveScaffold
         active_scaffold_overrides_dir = File.join(dir,"active_scaffold_overrides")
         @active_scaffold_overrides << active_scaffold_overrides_dir if File.exists?(active_scaffold_overrides_dir)
       end
+      @active_scaffold_overrides.uniq! # Fix rails duplicating some view_paths
       @active_scaffold_frontends = []
       if active_scaffold_config.frontend.to_sym != :default
         active_scaffold_custom_frontend_path = File.join(Rails.root, 'vendor', 'plugins', ActiveScaffold::Config::Core.plugin_directory, 'frontends', active_scaffold_config.frontend.to_s , 'views')
@@ -103,7 +104,7 @@ module ActiveScaffold
     def links_for_associations
       return unless active_scaffold_config.actions.include? :list and active_scaffold_config.actions.include? :nested
       active_scaffold_config.columns.each do |column|
-        next unless column.link.nil? and column.autolink
+        next unless column.link.nil? and column.autolink?
         if column.plural_association?
           # note: we can't create nested scaffolds on :through associations because there's no reverse association.
           column.set_link('nested', :parameters => {:associations => column.name.to_sym}, :html_options => {:class => column.name}) #unless column.through_association?
