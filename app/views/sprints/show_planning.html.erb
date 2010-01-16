@@ -11,7 +11,7 @@
     <div class="nested-scaffold single-record">
       <%= render :active_scaffold => 'sprints', 
         :label => "Dates & Focus Factor", 
-        :params => { :mode => params[:mode] },
+        :params => { :mode => params[:mode], :project_id => current_project.id  },
         :constraints => { :id => @record.id } 
       -%>
     </div>

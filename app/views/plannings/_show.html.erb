@@ -4,7 +4,7 @@
 
 <div class="nested-scaffold">
   <%= render :active_scaffold => 'tasks',
-    :params => {:mode => params[:mode]},
+    :params => {:mode => params[:mode], :project_id => current_project.id },
     :constraints => { :story_id => @record.story.id } -%>
 </div>
 
