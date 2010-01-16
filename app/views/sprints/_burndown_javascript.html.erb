@@ -1,0 +1,5 @@
+<script>
+  function redirect_to_stats_for_day( index ) {
+    window.location = '<%= project_sprint_empty_day_path current_project.id, @record.id%>/' + index
+  }
+</script>

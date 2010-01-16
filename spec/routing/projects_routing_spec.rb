@@ -35,6 +35,10 @@ describe ProjectsController do
     end
   end
 
+  describe "*_path route generation" do
+    it_should_map_path 'project_stats_for_date_path(1,"2099-12-31")', "/projects/1/stats_for_date/2099-12-31"
+  end
+
   describe "route recognition" do
     it "generates params for #index" do
       params_from(:get, "/projects").should == {:controller => "projects", :action => "index"}

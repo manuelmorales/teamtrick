@@ -15,7 +15,6 @@ class WorkHoursController < ApplicationController
     config.update.link = false
     config.delete.link = false
     config.show.link = false
-    config.list.no_entries_message = "No work hours for this task yet.<br /> Click <em>Edit</em> to start adding work hours."
   end
 
   protected
@@ -25,8 +24,10 @@ class WorkHoursController < ApplicationController
 
     if params[:with_tasks]
       active_scaffold_config.list.columns << [ :user, :hours, :task_with_story]
+      active_scaffold_config.list.no_entries_message = "No work hours where done this day."
     else
       active_scaffold_config.list.columns << [ :date, :user, :hours]
+      active_scaffold_config.list.no_entries_message = "No work hours for this task yet.<br /> Click <em>Edit</em> to start adding work hours."
     end
   end
 

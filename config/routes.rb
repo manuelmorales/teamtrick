@@ -38,14 +38,17 @@ ActionController::Routing::Routes.draw do |map|
   map.my_profile 'my_profile', :controller => 'users', :action => 'my_profile'
 
   map.resources :projects, :active_scaffold => true do |projects|
-   projects.resources :sprints, :active_scaffold => true
+   projects.resources :sprints, :active_scaffold => true do |sprints|
+     sprints.day 'day/:day', :controller => 'sprints', :action => 'day' 
+     sprints.empty_day 'day/', :controller => 'sprints', :action => 'day' 
+   end
+
    projects.resources :duties, :active_scaffold => true
    projects.resources :stories, :active_scaffold => true
    projects.resources :tasks, :active_scaffold => true
-   projects.connect ':id/statistics_for_day/:date', :controller => :projects 
   end
 
-  map.stats_for_date 'projects/:id/stats_for_date/:date/', :controller =>  'projects', :action => 'stats_for_date'
+  map.project_stats_for_date '/projects/:id/stats_for_date/:date', :controller =>  'projects', :action => 'stats_for_date'
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => 'projects', :action => 'index'

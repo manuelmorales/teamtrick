@@ -112,15 +112,24 @@ class SprintsController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  def day
+    params[:id] ||= params[:sprint_id]
+    do_show
+
+    date = @record.start_date + params[:day].to_i
+    redirect_to project_stats_for_date_path(@record.project, date.to_time.strftime("%Y-%m-%d"))
+  end
+
   def burndown_graph_data
     sprint = Sprint.find params[:id], :include => {:stories => {:tasks => :work_hours}}
     ideal_hours_left_values = sprint.burndown_date_range.map{|d| sprint.ideal_hours_left_for_day d}
     real_hours_left_values = sprint.burndown_date_range.map{|d| sprint.hours_left_for_day d}
     x_labels = sprint.date_range.map{|d| d.strftime('%d') }
+    link = "redirect_to_stats_for_day"
 
     values = [
-      {:values => real_hours_left_values, :text => "Real"},
-      {:values => ideal_hours_left_values, :text => "Ideal"}
+      {:values => real_hours_left_values, :link => link, :text => "Real"},
+      {:values => ideal_hours_left_values, :link => link, :text => "Ideal"}
     ]
     config = {
       :x_labels => x_labels, 

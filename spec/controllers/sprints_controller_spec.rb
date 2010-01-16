@@ -239,4 +239,20 @@ describe SprintsController do
       response.should render_template('message/index')
     end
   end
+
+  describe "responding to GET day" do
+    def do_request
+      get :day, :sprint_id => @default_record.id, :project_id => @default_record.project_id, :day => 5
+    end
+
+    it_should_require_login
+
+    it "should redirect to the corresponding stats_for_date action" do
+      @default_record.update_attribute :start_date, Date.parse("3000-12-01")
+      @default_record.update_attribute :finish_date, Date.parse("3000-12-31")
+
+      do_request
+      response.should redirect_to(project_stats_for_date_path(@default_record.project, "3000-12-06"))
+    end
+  end
 end

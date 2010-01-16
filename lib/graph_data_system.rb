@@ -86,6 +86,7 @@ module GraphDataSystem
       line.width = 4
       line.dot_size = 5
       line.values = g[:values]
+      line.on_click = g[:link]
 
       graph.add_element(line)
     end

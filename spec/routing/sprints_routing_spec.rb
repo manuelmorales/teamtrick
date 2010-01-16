@@ -45,6 +45,16 @@ describe SprintsController do
     it "maps #finish_planning" do
       route_for(:controller => "sprints", :action => "finish_planning", :id => "1", :project_id => "2").should == {:path =>"/projects/2/sprints/1/finish_planning", :method => :post}
     end
+
+    it "maps #day" do
+      route_for(:controller => "sprints", :action => "day", :sprint_id => "1", :project_id => "2", :day => "3").should == 
+        {:path => "projects/2/sprints/1/day/3"}
+    end
+
+    it "maps #day with :day => nil" do
+      route_for(:controller => "sprints", :action => "day", :sprint_id => "1", :project_id => "2").should == 
+        {:path => "projects/2/sprints/1/day"}
+    end
   end
 
   describe "*_path route generation" do
@@ -55,6 +65,8 @@ describe SprintsController do
     it_should_map_path 'project_sprint_current_path(2,1)', "/projects/2/sprints/1/current"
     it_should_map_path 'finish_planning_project_sprint_path(2,1)', "/projects/2/sprints/1/finish_planning"
     it_should_map_path 'edit_project_sprint_planning_path(2,1)', "/projects/2/sprints/1/planning/edit"
+    it_should_map_path 'project_sprint_day_path(2,1,3)', "/projects/2/sprints/1/day/3"
+    it_should_map_path 'project_sprint_empty_day_path(2,1)', "/projects/2/sprints/1/day"
   end
 
   describe "route recognition" do
@@ -104,6 +116,11 @@ describe SprintsController do
 
     it "generates params for #finish_planning" do
       params_from(:post, "/projects/2/sprints/1/finish_planning").should == {:controller => "sprints", :action => "finish_planning", :id => "1", :project_id => "2"}
+    end
+
+    it "generates params for #day" do
+      params_from(:get, "/projects/2/sprints/1/day/3").should == 
+        {:controller => "sprints", :action => "day", :sprint_id => "1", :project_id => "2", :day => "3"}
     end
   end
 end
