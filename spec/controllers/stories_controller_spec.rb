@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe StoriesController do
-  fixtures :roles, :stories, :users, :projects, :tasks
+  fixtures :roles, :stories, :users, :duties, :projects, :tasks
 
   def mock_story(stubs={})
     stubs = {:project => mock_project}.merge stubs

@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe CommitmentsController do
-  fixtures :roles, :commitments, :sprints, :users, :projects
+  fixtures :roles, :commitments, :duties, :sprints, :users, :projects
 
   def mock_commitment(stubs={})
     stubs = {:project => mock_project, :user => mock_user, :sprint => mock_sprint}.merge stubs
