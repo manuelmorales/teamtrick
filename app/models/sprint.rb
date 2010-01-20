@@ -93,7 +93,10 @@ class Sprint < ActiveRecord::Base
   # It is done dividing the available hours of human work
   # by the sum of WorkHours.
   def focus_factor
-    available_hours.to_f / work_hours_sum if status == "closed"
+    if status == "closed"
+      result = available_hours.to_f / work_hours_sum 
+      result.nan? ? 0.0 : result
+    end
   end
 
   # Returns "closed", "planning" or "in_course"
