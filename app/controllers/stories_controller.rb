@@ -99,7 +99,6 @@ class StoriesController < ApplicationController
 
   def do_new
     @record = do_new_with_project
-    @record.importance = Story.maximum(:importance) + 1
   end
 
   def custom_finder_options

@@ -106,6 +106,23 @@ describe StoriesController do
       maximum_importance = @current_project.stories.map(&:importance).max
       assigns[:record].importance.should == maximum_importance + 1
     end
+
+    it "should assign importance 1 when no other story is present on the table stories" do
+      Story.destroy_all
+      do_request
+      assigns[:record].importance.should == 1
+    end
+
+    it "should assign importance based on its project, not other projects" do
+      alternative_project = build_object(Project)
+      alternative_project.save!
+      alternative_story = build_object(Story, :importance => 9999, :project => alternative_project)
+      alternative_story.save!
+
+      do_request
+      maximum_importance = @current_project.stories.map(&:importance).max
+      assigns[:record].importance.should == maximum_importance + 1
+    end
   end
 
   describe "responding to GET edit" do
