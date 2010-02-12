@@ -55,8 +55,8 @@ namespace :pfc do
 
       n = 0
       Sprint.populate 3 do |sprint|
-        sprint.start_date = Date.today - 4*7*(n+1) + 1
-        sprint.finish_date = Date.today - 4*7*n
+        sprint.start_date = Date.today - 4*7*(n)
+        sprint.finish_date = Date.today - 4*7*(n - 1) - 1
         n += 1
         sprint.estimated_focus_factor = [ 0.6, 0.65, 0.7, 0.8]
         sprint.project_id = p.id
