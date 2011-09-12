@@ -28,12 +28,12 @@ Rails::Initializer.run do |config|
   config.gem "calendar_date_select"
   config.gem "faker"
   config.gem "populator"
-  config.gem "sqlite3-ruby", :lib => 'sqlite3'
-  config.gem "rack", :version => "1.0.1"
+  config.gem "sqlite3-ruby", :lib => 'sqlite3', :version => "1.2.5"
+  config.gem "rack", :version => "1.1.0"
 
   # Gems for testing
-  # config.gem 'rspec'
-  # config.gem 'rspec-rails'
+  # config.gem 'rspec', :version => "1.3.1"
+  # config.gem 'rspec-rails', :version => "1.3.3"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
